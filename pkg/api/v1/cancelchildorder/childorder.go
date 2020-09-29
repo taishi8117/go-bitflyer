@@ -2,9 +2,10 @@ package cancelchildorder
 
 import (
 	"encoding/json"
+	"net/http"
+
 	"github.com/kkohtaka/go-bitflyer/pkg/api/v1/markets"
 	"github.com/pkg/errors"
-	"net/http"
 )
 
 type Request struct {
@@ -34,4 +35,3 @@ func (req *Request) Payload() []byte {
 	}
 	return body
 }
-
