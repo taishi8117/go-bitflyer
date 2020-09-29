@@ -7,7 +7,7 @@ require (
 	github.com/google/gofuzz v1.2.0 // indirect
 	github.com/gorilla/rpc v1.1.0
 	github.com/gorilla/websocket v1.2.0
-	github.com/json-iterator/go v0.0.0-20171115153421-f7279a603ede
+	github.com/json-iterator/go v1.1.10
 	github.com/kkohtaka/go-bitflyer v0.0.0-20180803002416-c384578f343b
 	github.com/pkg/errors v0.8.0
 	github.com/stretchr/testify v1.6.1 // indirect

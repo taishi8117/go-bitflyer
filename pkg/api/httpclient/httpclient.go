@@ -5,6 +5,7 @@ package httpclient
 
 import (
 	"bytes"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -67,17 +68,26 @@ func (hc *httpClient) Request(api api.API, req api.Request, result interface{}) 
 	if err != nil {
 		return errors.Wrapf(err, "send HTTP request with url: %s", u.String())
 	}
+
+	fmt.Printf("[response code] %d\n", resp.StatusCode)
+	fmt.Println("TODO: check if error")
 	defer resp.Body.Close()
 
-	// TODO: Don't use ioutil.ReadAll()
-	data, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return errors.Wrapf(err, "read data fetched from url: %s", u.String())
-	}
+	var buf bytes.Buffer
+	tee := io.TeeReader(resp.Body, &buf)
 
-	err = json.Unmarshal(data, result)
+	// TODO: Don't use ioutil.ReadAll()
+	dec := json.NewDecoder(tee)
+	dec.DisallowUnknownFields()
+	err = dec.Decode(result)
+
 	if err != nil {
-		return errors.Wrapf(err, "unmarshal data: %s", string(data))
+		fmt.Printf("[err] %s\n", err.Error())
+		data, readErr := ioutil.ReadAll(&buf)
+		if readErr != nil {
+			return errors.Wrapf(err, "unmarshal response body: failed to read buffer")
+		}
+		return errors.Wrapf(err, "unmarshal response body: %s", string(data))
 	}
 	return nil
 }
