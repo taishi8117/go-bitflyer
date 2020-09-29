@@ -1,21 +1,21 @@
 package childorders
 
 import (
+	"net/http"
+	"time"
+
 	"github.com/google/go-querystring/query"
 	"github.com/kkohtaka/go-bitflyer/pkg/api/v1/markets"
 	"github.com/kkohtaka/go-bitflyer/pkg/api/v1/sendchildorder"
-	"net/http"
-	"time"
+	"github.com/kkohtaka/go-bitflyer/pkg/api/v1/types"
 )
 
 type Request struct {
-	ProductCode     markets.ProductCode
-	Count           int64
-	Before          int64
-	After           int64
-	ChildOrderState OrderState
-	ChildOrderId    string
-	ParentOrderId   string
+	ProductCode      markets.ProductCode `json:"product_code" url:"product_code"`
+	types.Pagination `json:",inline"`
+	ChildOrderState  OrderState `json:"child_order_state,omitempty" url:"child_order_state,omitempty"`
+	ChildOrderId     string     `json:"child_order_id,omitempty" url:"child_order_id,omitempty"`
+	ParentOrderId    string     `json:"parent_order_id,omitempty" url:"parent_order_id,omitempty"`
 }
 
 type OrderState string

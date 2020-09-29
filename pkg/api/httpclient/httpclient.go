@@ -39,6 +39,7 @@ func (hc *httpClient) Request(api api.API, req api.Request, result interface{}) 
 		return errors.Wrapf(err, "set base URI")
 	}
 	payload := req.Payload()
+	u.RawQuery = req.Query()
 
 	var body io.Reader
 	if len(payload) > 0 {
@@ -58,6 +59,8 @@ func (hc *httpClient) Request(api api.API, req api.Request, result interface{}) 
 	if len(payload) > 0 {
 		rawReq.Header.Set("Content-Type", "application/json")
 	}
+
+	// fmt.Printf("[%s] > %s\n", rawReq.Method, rawReq.URL)
 
 	c := &http.Client{}
 	resp, err := c.Do(rawReq)

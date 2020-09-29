@@ -30,12 +30,22 @@ func GenerateAuthHeaders(config *AuthConfig, now time.Time, api api.API, req api
 	timestamp := fmt.Sprintf("%d", now.Unix())
 	method := req.Method()
 	path := url.Path
+
+	// fmt.Println(path)
+	// fmt.Println(url.RawQuery)
+
 	payload := req.Payload()
 
 	mac := hmac.New(sha256.New, []byte(config.APISecret))
 	mac.Write([]byte(timestamp))
 	mac.Write([]byte(method))
 	mac.Write([]byte(path))
+
+	if len(url.RawQuery) > 0 {
+		mac.Write([]byte("?"))
+		mac.Write([]byte(url.RawQuery))
+	}
+
 	if len(payload) > 0 {
 		mac.Write(payload)
 	}
