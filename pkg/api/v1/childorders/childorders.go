@@ -6,8 +6,8 @@ import (
 
 	"github.com/google/go-querystring/query"
 	"github.com/kkohtaka/go-bitflyer/pkg/api/v1/markets"
-	"github.com/kkohtaka/go-bitflyer/pkg/api/v1/sendchildorder"
 	"github.com/kkohtaka/go-bitflyer/pkg/api/v1/types"
+	"github.com/taishi8117/go-bitflyer/pkg/api/v1/sendchildorder"
 )
 
 type Request struct {

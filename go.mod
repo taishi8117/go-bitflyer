@@ -2,6 +2,8 @@ module github.com/taishi8117/go-bitflyer
 
 go 1.14
 
+//replace github.com/kkohtaka/go-bitflyer => github.com/taishi8117/go-bitflyer v0.0.0-20200929053129-a29a7866c2de
+
 require (
 	github.com/google/go-querystring v0.0.0-20170111101155-53e6ce116135
 	github.com/google/gofuzz v1.2.0 // indirect

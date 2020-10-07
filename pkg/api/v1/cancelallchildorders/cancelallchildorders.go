@@ -1,4 +1,4 @@
-package cancelchildorder
+package cancelallchildorders
 
 import (
 	"encoding/json"
@@ -9,15 +9,13 @@ import (
 )
 
 type Request struct {
-	ProductCode            markets.ProductCode `json:"product_code"`
-	ChildOrderId           string              `json:"child_order_id,omitempty"`
-	ChildOrderAcceptanceId string              `json:"child_order_acceptance_id,omitempty"`
+	ProductCode markets.ProductCode `json:"product_code"`
 }
 
 type Response struct{}
 
 const (
-	APIPath = "/v1/me/cancelchildorder"
+	APIPath = "/v1/me/cancelallchildorders"
 )
 
 func (req *Request) Method() string {
