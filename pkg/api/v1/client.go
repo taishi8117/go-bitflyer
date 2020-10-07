@@ -10,7 +10,10 @@ import (
 	"github.com/kkohtaka/go-bitflyer/pkg/api/v1/balance"
 	"github.com/kkohtaka/go-bitflyer/pkg/api/v1/bankaccounts"
 	"github.com/kkohtaka/go-bitflyer/pkg/api/v1/board"
+	"github.com/kkohtaka/go-bitflyer/pkg/api/v1/cancelallchildorders"
+	"github.com/kkohtaka/go-bitflyer/pkg/api/v1/cancelchildorder"
 	"github.com/kkohtaka/go-bitflyer/pkg/api/v1/chats"
+	"github.com/kkohtaka/go-bitflyer/pkg/api/v1/childorders"
 	"github.com/kkohtaka/go-bitflyer/pkg/api/v1/coinins"
 	"github.com/kkohtaka/go-bitflyer/pkg/api/v1/coinouts"
 	"github.com/kkohtaka/go-bitflyer/pkg/api/v1/collateral"
@@ -19,13 +22,10 @@ import (
 	"github.com/kkohtaka/go-bitflyer/pkg/api/v1/health"
 	"github.com/kkohtaka/go-bitflyer/pkg/api/v1/markets"
 	"github.com/kkohtaka/go-bitflyer/pkg/api/v1/permissions"
+	"github.com/kkohtaka/go-bitflyer/pkg/api/v1/positions"
+	"github.com/kkohtaka/go-bitflyer/pkg/api/v1/sendchildorder"
 	"github.com/kkohtaka/go-bitflyer/pkg/api/v1/ticker"
 	"github.com/pkg/errors"
-	"github.com/taishi8117/go-bitflyer/pkg/api/v1/cancelallchildorders"
-	"github.com/taishi8117/go-bitflyer/pkg/api/v1/cancelchildorder"
-	"github.com/taishi8117/go-bitflyer/pkg/api/v1/childorders"
-	"github.com/taishi8117/go-bitflyer/pkg/api/v1/positions"
-	"github.com/taishi8117/go-bitflyer/pkg/api/v1/sendchildorder"
 )
 
 const (
